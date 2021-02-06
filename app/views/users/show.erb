@@ -1,0 +1,7 @@
+<br><p><%=@user.username%> has <%=@user.plants.count%> hibiscus plants in his/her garden.</p>
+Here they are:
+<ol>
+<%@user.plants.each do |plant|%>
+   <li> <a href="/plants/<%=plant.id%>"><%=plant.variety%></a>
+<%end%>
+</ol>

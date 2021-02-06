@@ -11,12 +11,28 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <!-- <link rel="stylesheet" href="/stylesheets/main.css" /> -->
   </head>
   <body>
     <div class="wrapper">
 
-        <%= yield %>
+    <%if !logged_in?%>
+        <a href="/signup">[Signup]</a> <a href="/login"> [Login]</a>
+    <%else%>
+        <a href="/plants"> [Garden] </a>    
+        <a href="/users/<%=current_user.slug%>"> [Your Plants]</a>
+        <a href="/plants/new">[Add New Plant]</a> 
+        <a href="/logout">[Logout]</a> 
+        <br>
+        <%=current_user.username%>
+    <%end%>  <br>
+
+    <% if !@error_message.nil? %>
+      <div class="alert alert-warning">
+        <%= @error_message %>
+      </div>
+    <% end %>
+      <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2021 <strong>HibiscusGarden</strong></small>

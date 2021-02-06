@@ -1,0 +1,9 @@
+<h4> Variety:  </h4><%= @plant.variety%>
+<h4> Type:  </h4> <a href="/plants/type/<%=@plant.type.id%>"><%= @plant.type.name%></a>
+<h4> Description: </h4> 
+<%= @plant.description%> <br>
+<a href= "/plants/<%=@plant.id%>/edit"><button type="button" >Edit Plant</button></a>
+<form action="/plants/<%=@plant.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Plant">
+</form>

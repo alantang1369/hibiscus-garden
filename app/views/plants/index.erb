@@ -1,0 +1,11 @@
+<h4> Here are all the plants in the garden:</h4>
+<ol>
+<%@plants.each do |plant|%>
+
+   <li>
+     <a href="/plants/<%=plant.id%>"><%=plant.variety%></a> - 
+     <a href="/users/<%=plant.user.slug%>"><%=plant.user.username%></a>
+   </li>
+
+<%end%>
+</ol>
