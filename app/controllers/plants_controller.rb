@@ -19,13 +19,17 @@ class PlantsController < ApplicationController
     end
     
     post '/plants' do
-        if params[:type][:name] != ""
-            @type = Type.create(params[:type])
-            params[:plant][:type_id] = @type.id
+        if params[:plant][:variety] = "" || params[:plant][:description]="" || params[:plant][:type]=""
+            redirect "/plants/new?error=variety, description and type can't be left blank"
+        else
+            if params[:type][:name] != ""
+                @type = Type.create(params[:type])
+                params[:plant][:type_id] = @type.id
+            end
+            @plant = Plant.create(params[:plant])
+            current_user.plants << @plant
+            redirect "/plants/#{@plant.id}"
         end
-        @plant = Plant.create(params[:plant])
-        current_user.plants << @plant
-        redirect "/plants/#{@plant.id}"
     end
 
     get '/plants/:id' do
