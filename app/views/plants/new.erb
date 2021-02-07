@@ -6,7 +6,7 @@
     <% Type.all.each do |type| %>
       <input type="radio" id="hibiscus_type" name="plant[type_id]"  value="<%= type.id %>"> <%= type.name %><br> 
     <%end%>
-   
+   Or
     <h4>Create new type:</h4> 
     Type name:<input type="text" id="new_type_name" name="type[name]"><br>
     Details:<br><textarea id="new_type_details" name="type[details]" placeholder="What should we know about this new type?"></textarea><br>

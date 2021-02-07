@@ -1,4 +1,4 @@
-EDIT PLANT:
+<h4>EDIT PLANT:</h4>
 <form action="/plants/<%=@plant.id%>" method="post">
     <input type="hidden" name="_method" value="patch" >
     Variety:<input type="text" name="plant[variety]" id="variety" value="<%=@plant.variety%>"><br>
@@ -7,10 +7,10 @@ EDIT PLANT:
     <% Type.all.each do |type| %>
       <input type="radio" id="hibiscus_type" name="plant[type_id]"  value="<%= type.id %>" <%= 'checked' if @plant.type = type%>> <%= type.name %><br> 
     <%end%>
-   
-    Create new type: <br>
+   Or
+    <h4>Create new type: </h4>
     Name:<input type="text" id="new_type_name" name="type[name]"><br>
-    Details:<textarea id="new_type_details" name="type[details]" placeholder="What should we know about this new type?"></textarea><br>
+    Details:<br><textarea id="new_type_details" name="type[details]" placeholder="What should we know about this new type?"></textarea><br>
     
     <input type="submit" value="Edit Plant" >
 </form>
